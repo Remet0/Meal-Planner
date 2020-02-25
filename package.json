@@ -1,0 +1,33 @@
+{
+  "name": "meal-planner",
+  "version": "1.0.0",
+  "description": "Randomized weekly meal planner",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "node index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Remet0/Meal-Planner.git"
+  },
+  "keywords": [
+    "Meal",
+    "Planning",
+    "Randomized",
+    "Nutrition"
+  ],
+  "author": "John Remeto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Remet0/Meal-Planner/issues"
+  },
+  "homepage": "https://github.com/Remet0/Meal-Planner#readme"
+}
