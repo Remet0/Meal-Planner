@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+const db = require('./db');
 const http = require('http');
 
 // Port Environment variable
