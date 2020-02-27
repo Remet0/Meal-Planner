@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 const db = require('./db');
 const http = require('http');
+const express = require('express');
 
+const app = express();
+
+app.use(express.json());
 // Port Environment variable
 const PORT = process.env.PORT || 5000;
 
