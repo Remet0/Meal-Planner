@@ -1,4 +1,3 @@
-const mysql = require('mysql');
 const Sequelize = require('sequelize');
 const UserModel = require('./models/userModel');
 require('dotenv').config();
@@ -14,9 +13,5 @@ const sequelize = new Sequelize(
 );
 
 const User = UserModel(sequelize, Sequelize);
-
-sequelize.sync().then(() => {
-  console.log('db and tables have been created');
-});
 
 module.exports = User;

@@ -3,11 +3,16 @@ const db = require('./db');
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 require('./routes/routeindex')(app);
 
-app.use(express.json());
 // Port Environment variable
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT);
-console.log('server running on port', PORT);
+db.sequelize.sync().then(() => {
+  console.log('db and tables have been created');
+  app.listen(PORT, () => {
+    console.log(`App listening on Port ${PORT}`);
+  });
+});

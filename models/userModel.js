@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-  return sequelize.define('Users', {
+  const User = sequelize.define('Users', {
     id: {
       type: type.INTEGER,
       primaryKey: true,
@@ -9,7 +9,7 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
       allowNull: false
     },
-    passwrod: {
+    password: {
       type: type.STRING,
       allowNull: false
     },
@@ -17,12 +17,23 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
       allowNull: false
     },
-    calories: type.INTEGER,
-    protein: type.INTEGER,
-    carbs: type.INTEGER,
+    calories: {
+      type: type.INTEGER,
+      allowNull: true
+    },
+    protein: {
+      type: type.INTEGER,
+      allowNull: true
+    },
+    carbs: {
+      type: type.INTEGER,
+      allowNull: true
+    },
     admin: {
       type: type.BOOLEAN,
       defaultValue: false
     }
   });
+
+  return User;
 };
