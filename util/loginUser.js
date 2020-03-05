@@ -1,6 +1,8 @@
 const CreateToken = require('./createToken');
+const bcrypt = require('bcrypt');
+const User = require('../db');
 
-module.exports = loginUser = async (req, res) => {
+module.exports = loginUser = async (req, res, next) => {
   let { username, password } = req.body;
 
   username = username.trim().toLowerCase();
@@ -14,24 +16,19 @@ module.exports = loginUser = async (req, res) => {
   }
 
   try {
-    const user = await connection.query(
-      `SELECT * FROM Users WHERE username = ${username}`,
-      (err, rows) => {
-        if (err) throw err;
-
-        return rows;
-      }
-    );
-
-    const match = false;
-    if (username === user.username) {
-      match = true;
+    const user = await User.findOne({ where: { username: username } });
+    if (!user) {
+      return res.status(400).send('User not found');
     }
+    console.log(`user info: \n ${user}`);
+    const match = await bcrypt.compare(password, user.password);
+    console.log('after match');
     if (!match) {
-      return res.status(400).send('username or password are incorrect');
+      return res.status(401).send('Username or Password do not match');
     }
-
+    console.log('before token');
     req.tokenString = CreateToken(user);
+    next();
   } catch {
     return res.status(500).send('Error processing request');
   }

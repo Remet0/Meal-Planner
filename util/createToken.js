@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'SuperSecret';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = CreateToken = userData => {
   if (!userData) {
