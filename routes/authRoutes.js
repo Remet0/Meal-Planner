@@ -35,25 +35,27 @@ authRoutes.post('/user', async (req, res) => {
 });
 
 authRoutes.post('/user/login', loginUser, async (req, res) => {
+  //get username from request
   const { username } = req.body;
+  //check if username exists
   if (!username) {
     return res.status(400).send('No username provided');
   }
-
+  //check if token qas attached correctly
   if (!req.tokenString) {
     return res.status(400).send('Missing Auth header');
   }
-
+  //find user
   const user = await User.findOne({ where: { username: username } });
   if (!user) {
     return res.status(400).send('no user data');
   }
-
+  //store user data in object with token
   const userData = {
     token: req.tokenString,
     user: user
   };
-  return res.status(200).send(res, userData);
+  return res.status(200).send(userData);
 });
 
 module.exports = authRoutes;
