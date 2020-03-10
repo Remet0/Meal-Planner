@@ -26,9 +26,10 @@ authRoutes.post('/user', async (req, res) => {
       admin: admin
     });
     //calls createToken function which signs a new token with user info
-    const token = await createToken(user);
+    //const token = await createToken(user);
     //return user and token
-    res.status(200).send({ user, token });
+    //res.status(200).send({ user, token });
+    res.status(200).send({ user });
   } catch {
     res.status(400).send('error making user');
   }

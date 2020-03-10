@@ -7,7 +7,7 @@ module.exports = CreateToken = userData => {
     return 'false';
   }
   const payload = {
-    _id: userData._id,
+    id: userData.id,
     username: userData.username,
     admin: userData.admin
   };
