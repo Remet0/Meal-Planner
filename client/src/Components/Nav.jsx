@@ -6,8 +6,12 @@ const NavBar = () => {
     <NavWrapper>
       <Header>Meal Planner</Header>
       <List>
-        <ListLink>Home</ListLink>
-        <ListLink>Login</ListLink>
+        <ListLink>
+          <a href="/">Home</a>
+        </ListLink>
+        <ListLink>
+          <a href="/login">Login</a>
+        </ListLink>
       </List>
       <NavAccent></NavAccent>
     </NavWrapper>
