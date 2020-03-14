@@ -25,13 +25,9 @@ authRoutes.post('/user', async (req, res) => {
       email: email,
       admin: admin
     });
-    //calls createToken function which signs a new token with user info
-    //const token = await createToken(user);
-    //return user and token
-    //res.status(200).send({ user, token });
     res.status(200).send({ user });
   } catch {
-    res.status(400).send('error making user');
+    res.status(400).send({ status: 400, message: 'error making user' });
   }
 });
 
@@ -40,16 +36,20 @@ authRoutes.post('/user/login', loginUser, async (req, res) => {
   const { username } = req.body;
   //check if username exists
   if (!username) {
-    return res.status(400).send('No username provided');
+    return res
+      .status(400)
+      .send({ status: 400, message: 'No username provided' });
   }
   //check if token qas attached correctly
   if (!req.tokenString) {
-    return res.status(400).send('Missing Auth header');
+    return res
+      .status(400)
+      .send({ status: 400, message: 'Missing Auth header' });
   }
   //find user
   const user = await User.findOne({ where: { username: username } });
   if (!user) {
-    return res.status(400).send('no user data');
+    return res.status(400).send({ status: 400, message: 'no user data' });
   }
   //store user data in object with token
   const userData = {

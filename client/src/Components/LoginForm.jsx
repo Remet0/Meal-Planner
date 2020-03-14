@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 //import styled from 'styled-components';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { push } = useHistory();
 
   const loginUser = async e => {
     e.preventDefault();
@@ -14,14 +16,20 @@ const LoginForm = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ username, password })
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        localStorage.setItem('loginToekn', data.token);
-        localStorage.setItem('userInfo', JSON.stringify(data.user));
-      });
+    });
+
+    const errorCodes = [400, 401, 500];
+    if (errorCodes.includes(response.status)) {
+      const errorData = await response.json();
+      console.log(errorData);
+    }
+    if (response.status === 200) {
+      const data = await response.json();
+      localStorage.setItem('loginToken', data.token);
+      localStorage.setItem('userInfo', JSON.stringify(data.user));
+
+      push('/');
+    }
   };
   return (
     <>
