@@ -5,9 +5,23 @@ const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const loginUser = e => {
+  const loginUser = async e => {
     e.preventDefault();
     //fetch request to /auth/user/login goes here
+    const response = await fetch('/auth/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        localStorage.setItem('loginToekn', data.token);
+        localStorage.setItem('userInfo', JSON.stringify(data.user));
+      });
   };
   return (
     <>
