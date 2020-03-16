@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { HomePage, LoginPage } from './Pages/index';
+import { HomePage, LoginPage, UserPage } from './Pages/index';
 
 import './App.css';
 
@@ -10,6 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/login" component={LoginPage}></Route>
+        <Route exact path="/user" component={UserPage}></Route>
       </Switch>
     </BrowserRouter>
   );

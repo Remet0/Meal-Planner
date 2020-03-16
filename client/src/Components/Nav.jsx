@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import UserStatus from './userStatus';
 
 const NavBar = () => {
   return (
@@ -10,7 +11,7 @@ const NavBar = () => {
           <a href="/">Home</a>
         </ListLink>
         <ListLink>
-          <a href="/login">Login</a>
+          <UserStatus></UserStatus>
         </ListLink>
       </List>
       <NavAccent></NavAccent>
