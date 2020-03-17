@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { NavBar } from '../Components/index';
+import { verifyUser } from '../lib/index';
 
 const UserPage = props => {
+  const username = props.match.params.username;
+  const token = localStorage.getItem('loginToken');
+  useEffect(() => {
+    verifyUser(username, token);
+  });
+
   return (
     <>
       <Wrapper>
         <NavBar></NavBar>
-        <h1>USER PAGE {props.match.params.userID}</h1>
+        <h1>USER PAGE {props.match.params.username}</h1>
       </Wrapper>
     </>
   );

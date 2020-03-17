@@ -1,7 +1,3 @@
-const jwt = require('jsonwebtoken');
-
-const JWT_SECRET = process.env.JWT_SECRET;
-
 module.exports = verifyToken = async (req, res, next) => {
   const header = req.headers['authorization'];
 
@@ -13,6 +9,6 @@ module.exports = verifyToken = async (req, res, next) => {
 
     next();
   } else {
-    res.status(403).send('You are unauthorized');
+    res.status(403).send({ status: 403, message: 'You are unauthorized' });
   }
 };
