@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavBar } from '../Components/index';
 
-const UserPage = () => {
+const UserPage = props => {
   return (
     <>
       <Wrapper>
         <NavBar></NavBar>
-        <h1>USER PAGE</h1>
+        <h1>USER PAGE {props.match.params.userID}</h1>
       </Wrapper>
     </>
   );
