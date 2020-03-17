@@ -4,11 +4,11 @@ const verifyUser = async (username, token) => {
   });
   if (response.status !== 200) {
     const error = await response.json();
-    console.log(error);
+    return console.log(error);
   }
   if (response.status === 200) {
     const data = await response.json();
-    console.log(data);
+    return data;
   }
 };
 

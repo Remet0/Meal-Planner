@@ -12,5 +12,5 @@ module.exports = CreateToken = userData => {
     admin: userData.admin
   };
 
-  return jwt.sign(payload, JWT_SECRET);
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '24h' });
 };
