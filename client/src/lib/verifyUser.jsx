@@ -1,14 +1,18 @@
-const verifyUser = async (username, token) => {
+const verifyUser = async props => {
+  const username = props.computedMatch.params.username;
+  const token = localStorage.getItem('loginToken');
   const response = await fetch(`/user/${username}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   if (response.status !== 200) {
     const error = await response.json();
-    return console.log(error);
+    console.log(error);
+    return false;
   }
   if (response.status === 200) {
     const data = await response.json();
-    return data;
+    console.log(data);
+    return true;
   }
 };
 

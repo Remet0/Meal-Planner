@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserStatus = () => {
   let userinfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -6,9 +7,9 @@ const UserStatus = () => {
   return (
     <>
       {userinfo ? (
-        <a href="/user">{userinfo.username}</a>
+        <Link to={`/user/${userinfo.username}`}>{userinfo.username}</Link>
       ) : (
-        <a href="/login">Login</a>
+        <Link to="/login">Login</Link>
       )}
     </>
   );

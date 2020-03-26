@@ -1,15 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { NavBar } from '../Components/index';
-import { verifyUser } from '../lib/index';
 
 const UserPage = props => {
-  const username = props.match.params.username;
-  const token = localStorage.getItem('loginToken');
-  useEffect(() => {
-    verifyUser(username, token);
-  });
-
   return (
     <>
       <Wrapper>

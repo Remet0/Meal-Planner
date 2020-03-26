@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserStatus from './userStatus';
 
@@ -8,7 +9,7 @@ const NavBar = () => {
       <Header>Meal Planner</Header>
       <List>
         <ListLink>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </ListLink>
         <ListLink>
           <UserStatus></UserStatus>
