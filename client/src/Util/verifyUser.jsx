@@ -7,6 +7,7 @@ const verifyUser = async props => {
   if (response.status !== 200) {
     const error = await response.json();
     console.log(error);
+    localStorage.clear();
     return false;
   }
   if (response.status === 200) {

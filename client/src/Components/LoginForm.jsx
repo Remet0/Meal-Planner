@@ -25,6 +25,7 @@ const LoginForm = () => {
     }
     if (response.status === 200) {
       const data = await response.json();
+      localStorage.clear();
       localStorage.setItem('loginToken', data.token);
       localStorage.setItem('userInfo', JSON.stringify(data.user));
 

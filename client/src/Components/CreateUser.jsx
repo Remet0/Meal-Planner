@@ -6,14 +6,31 @@ const CreateUser = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const admin = false;
 
   const handleClose = () => setShow(false);
   const handleOpen = () => setShow(true);
 
-  const createUser = e => {
+  const createUser = async e => {
     e.preventDefault();
+    const response = await fetch('/auth/user', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ username, password, email, admin })
+    });
 
-    handleClose();
+    const errorCodes = [400];
+    if (errorCodes.includes(response.status)) {
+      const errorData = await response.json();
+      console.log(errorData);
+    }
+    if (response.status === 200) {
+      const data = await response.json();
+      localStorage.setItem('userInfo', JSON.stringify(data.user));
+      handleClose();
+    }
   };
 
   if (!show) {
@@ -27,8 +44,8 @@ const CreateUser = () => {
   return (
     <>
       <ModalWrap>
-        <form onSubmit={createUser}>
-          <ul>
+        <Form onSubmit={createUser}>
+          <ListWrap>
             <li>
               <label htmlFor="username">Username:</label>
               <input
@@ -61,10 +78,10 @@ const CreateUser = () => {
             </li>
             <li>
               <button type="submit">Register</button>
+              <button onClick={handleClose}> Cancel</button>
             </li>
-          </ul>
-        </form>
-        <button onClick={handleClose}> Cancel</button>
+          </ListWrap>
+        </Form>
       </ModalWrap>
     </>
   );
@@ -83,4 +100,14 @@ const ModalWrap = styled.section`
   position: fixed;
   top: 50px;
   left: 0;
+`;
+
+const Form = styled.form`
+  display: flex;
+`;
+
+const ListWrap = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 `;
