@@ -3,9 +3,18 @@ import styled from 'styled-components';
 
 const CreateUser = () => {
   const [show, setShow] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleClose = () => setShow(false);
   const handleOpen = () => setShow(true);
+
+  const createUser = e => {
+    e.preventDefault();
+
+    handleClose();
+  };
 
   if (!show) {
     return (
@@ -18,7 +27,44 @@ const CreateUser = () => {
   return (
     <>
       <ModalWrap>
-        <button onClick={handleClose}> Close modal</button>
+        <form onSubmit={createUser}>
+          <ul>
+            <li>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+              ></input>
+            </li>
+            <li>
+              <label htmlFor="email">Email:</label>
+              <input
+                type="text"
+                name="email"
+                placeholder="JohnDoe@gmail.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              ></input>
+            </li>
+            <li>
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              ></input>
+            </li>
+            <li>
+              <button type="submit">Register</button>
+            </li>
+          </ul>
+        </form>
+        <button onClick={handleClose}> Cancel</button>
       </ModalWrap>
     </>
   );
@@ -32,6 +78,9 @@ const ModalWrap = styled.section`
   height: 500px;
   width: 90vw;
   background-color: white;
-  box-shadow: 5px 5px 15px;
+  box-shadow: 0px 0px 15px;
   z-index: 999;
+  position: fixed;
+  top: 50px;
+  left: 0;
 `;
