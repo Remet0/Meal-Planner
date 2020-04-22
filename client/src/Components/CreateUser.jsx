@@ -43,57 +43,64 @@ const CreateUser = () => {
 
   return (
     <>
-      <ModalWrap>
-        <Form onSubmit={createUser}>
-          <ListWrap>
-            <li>
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-              ></input>
-            </li>
-            <li>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="text"
-                name="email"
-                placeholder="JohnDoe@gmail.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              ></input>
-            </li>
-            <li>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              ></input>
-            </li>
-            <li>
-              <button type="submit">Register</button>
-              <button onClick={handleClose}> Cancel</button>
-            </li>
-          </ListWrap>
-        </Form>
-      </ModalWrap>
+      <Screenwrap>
+        <ModalWrap>
+          <Form onSubmit={createUser}>
+            <ListWrap>
+              <li>
+                <label htmlFor="username">Username:</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                ></input>
+              </li>
+              <li>
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="JohnDoe@gmail.com"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                ></input>
+              </li>
+              <li>
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                ></input>
+              </li>
+              <BtnWrap>
+                <button type="submit">Register</button>
+                <button onClick={handleClose}> Cancel</button>
+              </BtnWrap>
+            </ListWrap>
+          </Form>
+        </ModalWrap>
+      </Screenwrap>
     </>
   );
 };
 
 export default CreateUser;
 
+const Screenwrap = styled.section`
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.2;
+`;
 const ModalWrap = styled.section`
+  opacity: 1;
   margin-top: 50px;
-  margin-left: 50px;
-  height: 500px;
-  width: 90vw;
+  margin: 0 auto;
   background-color: white;
   box-shadow: 0px 0px 15px;
   z-index: 999;
@@ -104,10 +111,17 @@ const ModalWrap = styled.section`
 
 const Form = styled.form`
   display: flex;
+  justify-content: center;
+  padding: 50px 50px 50px 50px;
 `;
 
 const ListWrap = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+`;
+
+const BtnWrap = styled.li`
+  display: flex;
+  justify-content: space-between;
 `;

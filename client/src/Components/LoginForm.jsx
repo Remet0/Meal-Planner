@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-//import styled from 'styled-components';
+import styled from 'styled-components';
+import CreateUser from './CreateUser';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -35,7 +36,7 @@ const LoginForm = () => {
   return (
     <>
       <form onSubmit={loginUser}>
-        <ul>
+        <ListWrap>
           <li>
             <label htmlFor="username">Username:</label>
             <input
@@ -58,11 +59,18 @@ const LoginForm = () => {
           </li>
           <li>
             <button type="submit">Login</button>
+            <CreateUser></CreateUser>
           </li>
-        </ul>
+        </ListWrap>
       </form>
     </>
   );
 };
 
 export default LoginForm;
+
+const ListWrap = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
