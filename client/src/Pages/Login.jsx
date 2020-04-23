@@ -1,10 +1,13 @@
 import React from 'react';
 import { NavBar, LoginForm } from '../Components/index';
+import { Body } from '../Components/UI/Body';
 const LoginPage = () => {
   return (
     <>
-      <NavBar></NavBar>
-      <LoginForm></LoginForm>
+      <Body>
+        <NavBar></NavBar>
+        <LoginForm></LoginForm>
+      </Body>
     </>
   );
 };

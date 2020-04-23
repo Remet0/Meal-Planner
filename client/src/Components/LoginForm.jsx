@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import { ListWrap, Form, ModalWrap, BtnWrap } from './UI/index';
 import CreateUser from './CreateUser';
 
 const LoginForm = () => {
@@ -35,42 +35,38 @@ const LoginForm = () => {
   };
   return (
     <>
-      <form onSubmit={loginUser}>
-        <ListWrap>
-          <li>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-            ></input>
-          </li>
-          <li>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            ></input>
-          </li>
-          <li>
-            <button type="submit">Login</button>
-            <CreateUser></CreateUser>
-          </li>
-        </ListWrap>
-      </form>
+      <ModalWrap>
+        <Form onSubmit={loginUser}>
+          <ListWrap>
+            <li>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+              ></input>
+            </li>
+            <li>
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              ></input>
+            </li>
+            <BtnWrap>
+              <button type="submit">Login</button>
+              <CreateUser></CreateUser>
+            </BtnWrap>
+          </ListWrap>
+        </Form>
+      </ModalWrap>
     </>
   );
 };
 
 export default LoginForm;
-
-const ListWrap = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-`;
