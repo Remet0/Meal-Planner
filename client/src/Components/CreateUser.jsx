@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { ListWrap, ModalWrap, Form, BtnWrap } from './UI/index';
+import {
+  ListWrap,
+  ModalWrap,
+  Form,
+  FormBtn,
+  FieldStyle,
+  FormList
+} from './UI/index';
 
 const CreateUser = () => {
   const [show, setShow] = useState(false);
@@ -46,40 +53,38 @@ const CreateUser = () => {
       <ModalWrap>
         <Form onSubmit={createUser}>
           <ListWrap>
-            <li>
+            <FormList>
               <label htmlFor="username">Username:</label>
-              <input
+              <FieldStyle
                 type="text"
                 name="username"
                 placeholder="Username"
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-              ></input>
-            </li>
-            <li>
+              ></FieldStyle>
+            </FormList>
+            <FormList>
               <label htmlFor="email">Email:</label>
-              <input
+              <FieldStyle
                 type="text"
                 name="email"
                 placeholder="JohnDoe@gmail.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-              ></input>
-            </li>
-            <li>
+              ></FieldStyle>
+            </FormList>
+            <FormList>
               <label htmlFor="password">Password:</label>
-              <input
+              <FieldStyle
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-              ></input>
-            </li>
-            <BtnWrap>
-              <button type="submit">Register</button>
-              <button onClick={handleClose}> Cancel</button>
-            </BtnWrap>
+              ></FieldStyle>
+            </FormList>
+            <FormBtn type="submit">Register</FormBtn>
+            <FormBtn onClick={handleClose}> Cancel</FormBtn>
           </ListWrap>
         </Form>
       </ModalWrap>

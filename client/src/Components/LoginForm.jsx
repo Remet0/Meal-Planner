@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ListWrap, Form, ModalWrap, BtnWrap } from './UI/index';
+import { ListWrap, Form, ModalWrap, FormBtn } from './UI/index';
 import CreateUser from './CreateUser';
 
 const LoginForm = () => {
@@ -58,10 +58,8 @@ const LoginForm = () => {
                 onChange={e => setPassword(e.target.value)}
               ></input>
             </li>
-            <BtnWrap>
-              <button type="submit">Login</button>
-              <CreateUser></CreateUser>
-            </BtnWrap>
+            <FormBtn type="submit">Login</FormBtn>
+            <CreateUser></CreateUser>
           </ListWrap>
         </Form>
       </ModalWrap>
