@@ -5,7 +5,8 @@ import {
   Form,
   FormBtn,
   FieldStyle,
-  FormList
+  FormList,
+  BtnWrap
 } from './UI/index';
 
 const CreateUser = () => {
@@ -43,7 +44,7 @@ const CreateUser = () => {
   if (!show) {
     return (
       <>
-        <button onClick={handleOpen}>Sign Up</button>
+        <FormBtn onClick={handleOpen}>Sign Up</FormBtn>
       </>
     );
   }
@@ -83,8 +84,10 @@ const CreateUser = () => {
                 onChange={e => setPassword(e.target.value)}
               ></FieldStyle>
             </FormList>
-            <FormBtn type="submit">Register</FormBtn>
-            <FormBtn onClick={handleClose}> Cancel</FormBtn>
+            <BtnWrap>
+              <FormBtn type="submit">Register</FormBtn>
+              <FormBtn onClick={handleClose}> Cancel</FormBtn>
+            </BtnWrap>
           </ListWrap>
         </Form>
       </ModalWrap>

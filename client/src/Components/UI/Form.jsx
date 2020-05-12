@@ -14,6 +14,9 @@ const Form = styled.form`
   box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   border: 6px solid #305a72;
+  position: fixed;
+  top: 20vh;
+  left: 39vw;
 `;
 
 const ModalWrap = styled.section`
@@ -24,6 +27,9 @@ const ModalWrap = styled.section`
   z-index: 999;
   width: 400px;
   border-radius: 11px;
+  position: fixed;
+  top: 20vh;
+  left: 39vw;
 `;
 
 const FormBtn = styled.li`
@@ -43,6 +49,12 @@ const FormBtn = styled.li`
     background: linear-gradient(to bottom, #2d77a2 5%, #337da8 100%);
     background-color: #28739e;
   }
+`;
+
+const BtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const FormList = styled.li`
@@ -70,4 +82,4 @@ const FieldStyle = styled.input`
   }
 `;
 
-export { ListWrap, Form, ModalWrap, FormBtn, FieldStyle, FormList };
+export { ListWrap, Form, ModalWrap, FormBtn, FieldStyle, FormList, BtnWrap };

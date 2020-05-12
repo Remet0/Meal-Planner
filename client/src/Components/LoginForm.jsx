@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ListWrap, Form, ModalWrap, FormBtn } from './UI/index';
+import {
+  ListWrap,
+  ModalWrap,
+  Form,
+  FormBtn,
+  FieldStyle,
+  FormList,
+  BtnWrap
+} from './UI/index';
 import CreateUser from './CreateUser';
 
 const LoginForm = () => {
@@ -38,28 +46,30 @@ const LoginForm = () => {
       <ModalWrap>
         <Form onSubmit={loginUser}>
           <ListWrap>
-            <li>
+            <FormList>
               <label htmlFor="username">Username:</label>
-              <input
+              <FieldStyle
                 type="text"
                 name="username"
                 placeholder="Username"
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-              ></input>
-            </li>
-            <li>
+              ></FieldStyle>
+            </FormList>
+            <FormList>
               <label htmlFor="password">Password:</label>
-              <input
+              <FieldStyle
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-              ></input>
-            </li>
-            <FormBtn type="submit">Login</FormBtn>
-            <CreateUser></CreateUser>
+              ></FieldStyle>
+            </FormList>
+            <BtnWrap>
+              <FormBtn type="submit">Login</FormBtn>
+              <CreateUser></CreateUser>
+            </BtnWrap>
           </ListWrap>
         </Form>
       </ModalWrap>

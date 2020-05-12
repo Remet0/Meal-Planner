@@ -9,7 +9,7 @@ const NavBar = () => {
       <Header>Meal Planner</Header>
       <List>
         <ListLink>
-          <Link to="/">Home</Link>
+          <StyledLink to="/">Home</StyledLink>
         </ListLink>
         <ListLink>
           <UserStatus></UserStatus>
@@ -26,14 +26,14 @@ const NavWrapper = styled.section`
   display: flex;
   position: relative;
   height: 50px;
-  background-color: rgb(31, 156, 252);
+  background-color: #305a72;
 `;
 
 const NavAccent = styled.hr`
   margin: 0;
   position: absolute;
   bottom: 0;
-  border: 1px solid rgb(45, 115, 31);
+  border: 1px solid white;
   width: 100vw;
   height: 0;
   box-shadow: 0px 1px 2px grey;
@@ -44,6 +44,7 @@ const Header = styled.h1`
   left: 10px;
   top: 0px;
   margin-top: 10px;
+  color: white;
 `;
 
 const List = styled.ul`
@@ -55,4 +56,14 @@ const List = styled.ul`
 const ListLink = styled.li`
   display: inline;
   margin-right: 2em;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
