@@ -19,6 +19,18 @@ const Form = styled.form`
   left: 39vw;
 `;
 
+const NestedForm = styled.div`
+  max-width: 450px;
+  background: #fafafa;
+  padding: 30px;
+  margin: 50px auto;
+  box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  border: 6px solid #305a72;
+  position: fixed;
+  top: 20vh;
+  left: 39vw;
+`;
 const ModalWrap = styled.section`
   margin: 0 auto;
   margin-top: 100px;
@@ -32,7 +44,7 @@ const ModalWrap = styled.section`
   left: 39vw;
 `;
 
-const FormBtn = styled.li`
+const FormBtn = styled.button`
   -moz-box-shadow: inset 0px 1px 0px 0px #3985b1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #3985b1;
   box-shadow: inset 0px 1px 0px 0px #3985b1;
@@ -82,4 +94,13 @@ const FieldStyle = styled.input`
   }
 `;
 
-export { ListWrap, Form, ModalWrap, FormBtn, FieldStyle, FormList, BtnWrap };
+export {
+  ListWrap,
+  Form,
+  ModalWrap,
+  FormBtn,
+  FieldStyle,
+  FormList,
+  BtnWrap,
+  NestedForm
+};

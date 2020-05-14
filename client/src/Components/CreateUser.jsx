@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   ListWrap,
   ModalWrap,
-  Form,
+  NestedForm,
   FormBtn,
   FieldStyle,
   FormList,
@@ -52,7 +52,7 @@ const CreateUser = () => {
   return (
     <>
       <ModalWrap>
-        <Form onSubmit={createUser}>
+        <NestedForm>
           <ListWrap>
             <FormList>
               <label htmlFor="username">Username:</label>
@@ -85,11 +85,11 @@ const CreateUser = () => {
               ></FieldStyle>
             </FormList>
             <BtnWrap>
-              <FormBtn type="submit">Register</FormBtn>
+              <FormBtn onClick={createUser}>Register</FormBtn>
               <FormBtn onClick={handleClose}> Cancel</FormBtn>
             </BtnWrap>
           </ListWrap>
-        </Form>
+        </NestedForm>
       </ModalWrap>
     </>
   );

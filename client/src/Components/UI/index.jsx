@@ -5,7 +5,8 @@ import {
   FormBtn,
   FieldStyle,
   FormList,
-  BtnWrap
+  BtnWrap,
+  NestedForm
 } from './Form';
 import { Body } from './Body';
 
@@ -17,5 +18,6 @@ export {
   Body,
   FieldStyle,
   FormList,
-  BtnWrap
+  BtnWrap,
+  NestedForm
 };
