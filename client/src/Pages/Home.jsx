@@ -1,21 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { NavBar } from '../Components/index';
+import { Body } from '../Components/UI/Body';
 
 const HomePage = () => {
   return (
     <>
-      <Wrapper>
+      <Body>
         <NavBar></NavBar>
-      </Wrapper>
+      </Body>
     </>
   );
 };
 
 export default HomePage;
-
-const Wrapper = styled.section`
-  background-color: grey;
-  height: 100%;
-  width: 100%;
-`;
