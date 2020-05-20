@@ -1,11 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Profile = () => {
-  //useEffect to run get request when page mounts. put in seperate component and import into here.
+  //useEffect to run get request when page mounts.
+  //use get request to user/profile/:username
+  const [loaded, setLoaded] = useState(false);
+  const [userData, setUserData] = useState();
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const token = localStorage.getItem('loginToken');
 
+  const userCall = async () => {
+    const response = await fetch(`/user/profile/${userInfo.username}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    let data = await response.json();
+    setUserData(data);
+    setLoaded(true);
+  };
+
+  useEffect(() => {
+    if (!loaded) {
+      userCall();
+    }
+  }, [loaded]);
+  if (userData != null) {
+    return (
+      <>
+        <button>Edit Profile</button>
+        <p>Hello there {userData.username}</p>
+        <p>
+          your goals are {userData.calories}, {userData.protein},
+          {userData.carbs}
+        </p>
+      </>
+    );
+  }
   return (
     <>
-      <p>Hello</p>
+      <p>Loading</p>
     </>
   );
 };
