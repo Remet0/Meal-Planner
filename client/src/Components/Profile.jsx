@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { EditUserModal } from './index';
 
 const Profile = () => {
   //useEffect to run get request when page mounts.
@@ -28,12 +29,8 @@ const Profile = () => {
   if (userData != null) {
     return (
       <>
-        <button>Edit Profile</button>
-        <p>Hello there {userData.username}</p>
-        <p>
-          your goals are {userData.calories}, {userData.protein},
-          {userData.carbs}
-        </p>
+        <EditUserModal></EditUserModal>
+        <p>Hi {userData.username}</p>
       </>
     );
   }

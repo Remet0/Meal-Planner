@@ -9,7 +9,6 @@ const UserPage = props => {
       <Body>
         <NavBar></NavBar>
         <Profile></Profile>
-        <h1>USER PAGE {props.match.params.username}</h1>
       </Body>
     </>
   );
